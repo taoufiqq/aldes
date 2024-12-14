@@ -386,7 +386,7 @@ export default function Home() {
         <section className="py-16 bg-gradient-to-b from-[#4CAF50]/10 to-white">
           <div className="container mx-auto px-4">
             <h2
-              className="section-title-who mb-16 text-center font-bold sm:text-sm md:text-xl lg:text-3xl"
+              className="section-title-who mb-8 text-center text-3xl font-bold"
               data-aos="fade-up"
             >
               من نحن
@@ -460,7 +460,7 @@ export default function Home() {
                 data-aos="fade-up"
                 data-aos-delay="200"
               >
-                <div className="relative flex flex-col h-[400px] w-full max-w-lg items-center justify-center overflow-hidden rounded-lg border bg-background md:h-[400px] lg:h-[460px] shadow-lg">
+                <div className="relative flex flex-col h-[400px] w-full max-w-lg items-center  border-r-4 border-[#4CAF50] justify-center overflow-hidden rounded-lg  bg-background md:h-[400px] lg:h-[460px] shadow-lg">
                   <Marquee pauseOnHover className="[--duration:20s]">
                     {firstRow.map((review) => (
                       <ReviewCard
@@ -492,7 +492,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="py-16">
+        <section className="py-16  bg-gradient-to-b from-[#ffd68b57]/10 to-white mb-8">
           <div className="container mx-auto px-4">
             <h2
               className="section-title-services mb-8 text-center text-3xl font-bold"
@@ -527,7 +527,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="py-16">
+        <section className="py-16 bg-gradient-to-b from-[#4CAF50]/10 to-white mb-8">
           <div className="container mx-auto px-4">
             <h2
               className="section-title-workshop mb-8 text-center text-3xl font-bold"
