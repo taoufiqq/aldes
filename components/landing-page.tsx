@@ -67,6 +67,7 @@ export default function Home() {
   }, []);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const NavLinks = ({ mobile = false }) => (
     <>
@@ -193,7 +194,69 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="bg-white shadow-sm sticky top-0 z-10">
+      <header
+        className={`bg-white shadow-sm sticky top-0 z-10 transition-all duration-300 ${
+          isScrolled ? "py-2" : "py-4"
+        }`}
+      >
+        <div className="container mx-auto px-4 flex justify-between items-center">
+          <div className="flex items-center space-x-2 rtl:space-x-reverse">
+            <Link
+              href="/"
+              className="flex items-center justify-center group"
+              data-aos="zoom-out"
+            >
+              <Image
+                src={logo}
+                alt="جمعية البويبات للتنمية والتربية والتضامن"
+                width={80}
+                height={80}
+                className={`object-contain transition-all duration-300 ${
+                  isScrolled ? "w-12 h-12" : "w-16 h-16 sm:w-20 sm:h-20"
+                }`}
+              />
+              <span
+                className={`text-[#0000FF] font-bold transition-all duration-300 group-hover:text-[#4CAF50] rtl:mr-2 ltr:ml-2 ${
+                  isScrolled
+                    ? "text-sm sm:text-base"
+                    : "text-base sm:text-lg md:text-xl lg:text-2xl"
+                }`}
+              >
+                جمعية البويبات للتنمية والتربية والتضامن
+              </span>
+            </Link>
+          </div>
+          <nav className="hidden lg:block" data-aos="zoom-in">
+            <ul className="flex space-x-6 rtl:space-x-reverse">
+              <NavLinks />
+            </ul>
+          </nav>
+          <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+            <SheetTrigger asChild className="lg:hidden">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="text-[#4CAF50] hover:text-[#0000FF]"
+                aria-label="Toggle menu"
+              >
+                {isMenuOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+              <nav className="flex flex-col space-y-4 mt-8">
+                <ul className="space-y-4">
+                  <NavLinks mobile />
+                </ul>
+              </nav>
+            </SheetContent>
+          </Sheet>
+        </div>
+      </header>
+      {/* <header className="bg-white shadow-sm sticky top-0 z-10">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <div className="flex items-center space-x-2">
             <Link
@@ -243,7 +306,7 @@ export default function Home() {
             </SheetContent>
           </Sheet>
         </div>
-      </header>
+      </header> */}
 
       <main className="flex-grow">
         <section className="py-0">
@@ -366,8 +429,12 @@ export default function Home() {
               </div>
 
               {/* <!-- Right Section --> */}
-              <div className="flex justify-center">
-                <div className="relative flex flex-col h-[400px] w-full max-w-lg items-center justify-center overflow-hidden rounded-lg border bg-background md:h-[500px] lg:h-[600px] shadow-lg">
+              <div
+                className="flex justify-center"
+                data-aos="fade-up"
+                data-aos-delay="200"
+              >
+                <div className="relative flex flex-col h-[400px] w-full max-w-lg items-center justify-center overflow-hidden rounded-lg border bg-background md:h-[500px] lg:h-[734px] shadow-lg">
                   <Marquee pauseOnHover className="[--duration:20s]">
                     {firstRow.map((review) => (
                       <ReviewCard key={review.username} {...review} />
