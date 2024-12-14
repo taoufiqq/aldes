@@ -44,7 +44,7 @@ body {
 
 /* Styles for mobile navigation links */
 .mobile-nav-link {
-  font-size: 2rem;
+  font-size: 1.5rem;
   padding: 0.5rem 0;
   display: block;
 }
@@ -62,15 +62,19 @@ body {
   margin-bottom: 2rem;
   text-align: center;
 }
+
 .section-title-workshop {
   color: #f4a460;
 }
+
 .section-title-services {
   color: #4caf50;
 }
+
 .section-title-who {
   color: #4caf50;
 }
+
 @media (max-width: 768px) {
   .section-title {
     font-size: 2rem;
