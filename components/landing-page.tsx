@@ -460,22 +460,28 @@ export default function Home() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <div className="bg-white p-6 rounded-lg shadow border-r-4 border-[#4CAF50]">
-                <h3 className="text-xl font-semibold mb-4">Service 1</h3>
-                <p>
+                <h3 className="text-xl font-semibold mb-4" data-aos="fade-up">
+                  إستخلاص فواتير الماء
+                </h3>
+                <p data-aos="fade-up">
                   Description du premier service ou activité principale de votre
                   entreprise sociale.
                 </p>
               </div>
               <div className="bg-white p-6 rounded-lg shadow border-r-4 border-[#4CAF50]">
-                <h3 className="text-xl font-semibold mb-4">Service 2</h3>
-                <p>
+                <h3 className="text-xl font-semibold mb-4" data-aos="fade-up">
+                  النقل المدرسي
+                </h3>
+                <p data-aos="fade-up">
                   Description du deuxième service ou activité principale de
                   votre entreprise sociale.
                 </p>
               </div>
               <div className="bg-white p-6 rounded-lg shadow border-r-4 border-[#4CAF50]">
-                <h3 className="text-xl font-semibold mb-4">Service 3</h3>
-                <p>
+                <h3 className="text-xl font-semibold mb-4" data-aos="fade-up">
+                  جمع النفايات
+                </h3>
+                <p data-aos="fade-up">
                   Description du troisième service ou activité principale de
                   votre entreprise sociale.
                 </p>
@@ -491,43 +497,51 @@ export default function Home() {
             {/* Logo et informations */}
             <div className="flex flex-col items-center md:items-start">
               <Image
+                data-aos="fade-up"
                 src={logoFooter}
                 alt="جمعية البويبات للتنمية والتربية والتضامن"
                 width={60}
                 height={60}
                 className="object-contain mb-4"
               />
-              <h3 className="text-xl font-bold mb-2">A.L.D.E.S</h3>
-              <p>
+              <h3 className="text-xl font-bold mb-2" data-aos="fade-up">
+                A.L.D.E.S
+              </h3>
+              <p data-aos="fade-up">
                 <strong>عنوان المقر الاجتماعي :</strong> دوار البويبات، جماعة
                 إنشادن، قيادة بلفاع، دائرة بلفاع ماسة، إقليم اشتوكة آيت باها،
                 الرمز البريدي: 80272
               </p>
-              <p>
+              <p data-aos="fade-up">
                 <strong>الهاتف :</strong> 0612013454
               </p>
             </div>
 
             {/* Liens rapides */}
             <div className="text-center md:text-right">
-              <h3 className="text-xl font-bold mb-4">روابط سريعة</h3>
-              <ul className="space-y-2">
+              <h3 className="text-xl font-bold mb-4" data-aos="fade-up">
+                روابط سريعة
+              </h3>
+              <ul className="space-y-2" data-aos="fade-up">
                 <NavLinks />
               </ul>
             </div>
 
             {/* Contact et réseaux sociaux */}
             <div className="text-center md:text-right">
-              <h3 className="text-xl font-bold mb-4">تواصل معنا</h3>
-              <p>
+              <h3 className="text-xl font-bold mb-4" data-aos="fade-up">
+                تواصل معنا
+              </h3>
+              <p data-aos="fade-up">
                 <strong> البريد الإلكتروني :</strong>
                 aldes@gmail.com
               </p>
-              <p>
+              <p data-aos="fade-up">
                 <strong>الهاتف :</strong> 0612013454
               </p>
               <div className="flex justify-center md:justify-end space-x-4 space-x-reverse">
                 <a
+                  data-aos="fade-up"
                   href="https://facebook.com"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -537,6 +551,7 @@ export default function Home() {
                   <FontAwesomeIcon icon={faFacebookF} className="text-2xl" />
                 </a>
                 <a
+                  data-aos="fade-up"
                   href="https://twitter.com"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -546,6 +561,7 @@ export default function Home() {
                   <FontAwesomeIcon icon={faTwitter} className="text-2xl" />
                 </a>
                 <a
+                  data-aos="fade-up"
                   href="https://instagram.com"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -555,6 +571,7 @@ export default function Home() {
                   <FontAwesomeIcon icon={faInstagram} className="text-2xl" />
                 </a>
                 <a
+                  data-aos="fade-up"
                   href="mailto:aldes@gmail.com"
                   aria-label="Email"
                   className="text-white hover:text-blue-300"
