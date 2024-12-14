@@ -1,3 +1,4 @@
+// 
 "use client";
 
 import Link from "next/link";
@@ -5,7 +6,7 @@ import logo from "../public/pics/aldes.png";
 import logoFooter from "../public/pics/logo-footer.jpg";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, X } from "lucide-react";
+import { Menu, X } from 'lucide-react';
 import * as React from "react";
 import Image from "next/image";
 import { useState, useEffect } from "react";
@@ -28,7 +29,7 @@ import {
 } from "@/components/ui/carousel";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import { Modal } from "./Modal";
+import { Modal } from './Modal';
 
 const images = [
   {
@@ -60,7 +61,12 @@ const images = [
 export default function Home() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedReview, setSelectedReview] = useState(null);
+  const [selectedReview, setSelectedReview] = useState<{
+    name: string;
+    username: string;
+    body: string;
+    img: string;
+  } | null>(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -116,28 +122,40 @@ export default function Home() {
   const reviews = [
     {
       name: "سعيد إزم",
-      username: "said",
+      username: "Said Izem",
       body: "رئيس الجمعية",
       img: "/pics/aldes.png",
     },
     {
       name: "رشيد باق",
-      username: "rachid",
+      username: "Rachid Baq",
       body: "مدير الجمعية",
       img: "/pics/aldes.png",
     },
     {
       name: "الحسين بسموم",
-      username: "elhossein",
-      body: "الكاتب",
+      username: "elhossain bismoum",
+      body: "",
       img: "/pics/aldes.png",
     },
     {
       name: "أوبركة",
-      username: "oberka",
+      username: "Ouberka",
       body: "أمين المال",
       img: "/pics/aldes.png",
     },
+    // {
+    //   name: "",
+    //   username: "",
+    //   body: "",
+    //   img: "/pics/aldes.png",
+    // },
+    // {
+    //   name: "",
+    //   username: "",
+    //   body: "",
+    //   img: "/pics/aldes.png",
+    // },
   ];
 
   const firstRow = reviews.slice(0, reviews.length / 2);
@@ -168,8 +186,8 @@ export default function Home() {
         <div className="flex flex-row items-center gap-2">
           <img
             className="rounded-full"
-            width="62"
-            height="62"
+            width="32"
+            height="32"
             alt=""
             src={img}
           />
@@ -251,8 +269,8 @@ export default function Home() {
       </header>
 
       <main className="flex-grow">
-        <section className="py-0">
-          <Carousel className="relative w-full">
+        <section className="py-0 h-[60vh]">
+          <Carousel className="relative w-full h-full">
             <CarouselContent>
               {images.map((image, index) => (
                 <CarouselItem
@@ -262,12 +280,12 @@ export default function Home() {
                   } transition-opacity duration-500`}
                 >
                   <Card className="border-0">
-                    <CardContent className="relative p-0 aspect-[2/1] h-full">
+                    <CardContent className="relative p-0 h-full">
                       <Image
                         src={image.src}
                         alt={image.alt}
                         fill
-                        className="object-cover"
+                        className="object-cover object-center"
                       />
                       <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-white p-6">
                         <h2 className="text-3xl md:text-4xl sm:text-sm font-bold mb-4 text-center">
@@ -372,11 +390,11 @@ export default function Home() {
 
               {/* Right Section */}
               <div
-                className="flex justify-center "
+                className="flex justify-center"
                 data-aos="fade-up"
                 data-aos-delay="200"
               >
-                <div className="relative flex flex-col h-[400px] w-full max-w-lg items-center justify-center overflow-hidden rounded-lg  bg-background md:h-[500px] lg:h-[734px] shadow-lg border-r-4 border-[#4CAF50]">
+                <div className="relative flex flex-col h-[400px] w-full max-w-lg items-center justify-center overflow-hidden rounded-lg border bg-background md:h-[500px] lg:h-[734px] shadow-lg">
                   <Marquee pauseOnHover className="[--duration:20s]">
                     {firstRow.map((review) => (
                       <ReviewCard
