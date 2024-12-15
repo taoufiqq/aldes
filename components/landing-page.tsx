@@ -106,48 +106,12 @@ export default function Home() {
   const aboutRef = useRef<HTMLElement>(null);
   const servicesRef = useRef<HTMLElement>(null);
   const contactRef = useRef<HTMLElement>(null);
-  const scrollToSection = (ref: React.RefObject<HTMLElement>) => {
-    if (ref.current) {
-      ref.current.scrollIntoView({ behavior: "smooth" });
-    }
-    setIsMenuOpen(false);
+
+  const scrollToSection = (ref: React.RefObject<HTMLElement | null>) => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   const NavLinks = ({ mobile = false }) => (
-    // <>
-    //   <li>
-    //     <Link
-    //       href="#"
-    //       className={`nav-link ${mobile ? "mobile-nav-link" : "pl-6"}`}
-    //     >
-    //       الرئيسية
-    //     </Link>
-    //   </li>
-    //   <li>
-    //     <Link
-    //       href="#"
-    //       className={`nav-link ${mobile ? "mobile-nav-link" : ""}`}
-    //     >
-    //       معلومات عنا
-    //     </Link>
-    //   </li>
-    //   <li>
-    //     <Link
-    //       href="#"
-    //       className={`nav-link ${mobile ? "mobile-nav-link" : ""}`}
-    //     >
-    //       خدماتنا
-    //     </Link>
-    //   </li>
-    //   <li>
-    //     <Link
-    //       href="#"
-    //       className={`nav-link ${mobile ? "mobile-nav-link" : ""}`}
-    //     >
-    //       اتصل بنا
-    //     </Link>
-    //   </li>
-    // </>
     <>
       <li>
         <button
