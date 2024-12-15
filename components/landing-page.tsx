@@ -8,7 +8,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ArrowUp, Menu, X } from "lucide-react";
 import * as React from "react";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -102,39 +102,84 @@ export default function Home() {
     images: string[];
   } | null>(null);
 
+  const homeRef = useRef<HTMLElement>(null);
+  const aboutRef = useRef<HTMLElement>(null);
+  const servicesRef = useRef<HTMLElement>(null);
+  const contactRef = useRef<HTMLElement>(null);
+  const scrollToSection = (ref: React.RefObject<HTMLElement>) => {
+    if (ref.current) {
+      ref.current.scrollIntoView({ behavior: "smooth" });
+    }
+    setIsMenuOpen(false);
+  };
+
   const NavLinks = ({ mobile = false }) => (
+    // <>
+    //   <li>
+    //     <Link
+    //       href="#"
+    //       className={`nav-link ${mobile ? "mobile-nav-link" : "pl-6"}`}
+    //     >
+    //       الرئيسية
+    //     </Link>
+    //   </li>
+    //   <li>
+    //     <Link
+    //       href="#"
+    //       className={`nav-link ${mobile ? "mobile-nav-link" : ""}`}
+    //     >
+    //       معلومات عنا
+    //     </Link>
+    //   </li>
+    //   <li>
+    //     <Link
+    //       href="#"
+    //       className={`nav-link ${mobile ? "mobile-nav-link" : ""}`}
+    //     >
+    //       خدماتنا
+    //     </Link>
+    //   </li>
+    //   <li>
+    //     <Link
+    //       href="#"
+    //       className={`nav-link ${mobile ? "mobile-nav-link" : ""}`}
+    //     >
+    //       اتصل بنا
+    //     </Link>
+    //   </li>
+    // </>
     <>
       <li>
-        <Link
-          href="#"
+        <button
+          onClick={() => scrollToSection(homeRef)}
           className={`nav-link ${mobile ? "mobile-nav-link" : "pl-6"}`}
         >
           الرئيسية
-        </Link>
+        </button>
       </li>
       <li>
-        <Link
-          href="#"
+        <button
+          onClick={() => scrollToSection(aboutRef)}
           className={`nav-link ${mobile ? "mobile-nav-link" : ""}`}
         >
-          معلومات عنا
-        </Link>
+          من نحن
+        </button>
       </li>
       <li>
-        <Link
-          href="#"
+        <button
+          onClick={() => scrollToSection(servicesRef)}
           className={`nav-link ${mobile ? "mobile-nav-link" : ""}`}
         >
           خدماتنا
-        </Link>
+        </button>
       </li>
       <li>
-        <Link
-          href="#"
+        <button
+          onClick={() => scrollToSection(contactRef)}
           className={`nav-link ${mobile ? "mobile-nav-link" : ""}`}
         >
-          اتصل بنا
-        </Link>
+          للاتصال
+        </button>
       </li>
     </>
   );
@@ -467,7 +512,7 @@ export default function Home() {
       </header>
 
       <main className="flex-grow">
-        <section className="py-0">
+        <section ref={homeRef} className="py-0">
           <Carousel className="relative w-full h-96">
             {" "}
             {/* Define a height for the carousel */}
@@ -525,7 +570,10 @@ export default function Home() {
             />
           </Carousel>
         </section>
-        <section className="py-16 bg-gradient-to-b from-[#4CAF50]/10 to-white">
+        <section
+          ref={aboutRef}
+          className="py-16 bg-gradient-to-b from-[#4CAF50]/10 to-white"
+        >
           <div className="container mx-auto px-4">
             <h2
               className="section-title-who mb-8 text-center text-3xl font-bold"
@@ -634,7 +682,10 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="py-16  bg-gradient-to-b from-[#ffd68b57]/10 to-white mb-8">
+        <section
+          ref={servicesRef}
+          className="py-16  bg-gradient-to-b from-[#ffd68b57]/10 to-white mb-8"
+        >
           <div className="container mx-auto px-4">
             <h2
               className="section-title-services mb-8 text-center text-3xl font-bold"
@@ -747,7 +798,10 @@ export default function Home() {
           </div>
         </section>
         {/* New Map and Contact Form Section */}
-        <section className="py-16 bg-gradient-to-b from-[#ffd68b57]/10 to-white mb-8">
+        <section
+          ref={contactRef}
+          className="py-16 bg-gradient-to-b from-[#ffd68b57]/10 to-white mb-8"
+        >
           <div className="container mx-auto px-4">
             <h2
               className="section-title mb-12 text-center text-2xl md:text-3xl font-semibold"
