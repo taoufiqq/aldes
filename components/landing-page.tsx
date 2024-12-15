@@ -5,7 +5,7 @@ import logo from "../public/pics/aldes.png";
 import logoFooter from "../public/pics/logo-footer.jpg";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, X } from "lucide-react";
+import { ArrowUp, Menu, X } from "lucide-react";
 import * as React from "react";
 import Image from "next/image";
 import { useState, useEffect } from "react";
@@ -32,7 +32,7 @@ import { Modal } from "./Modal";
 import { WorkshopsModal } from "./WorkshopsModal";
 import { ServiceModal } from "./ServiceModal";
 import { ContactForm } from "./ContactForm";
-
+import { AssociationInfrastructureModal } from "./AssociationInfrastructureModal";
 const images = [
   {
     src: "/pics/Slider4.jpeg",
@@ -87,6 +87,16 @@ export default function Home() {
   } | null>(null);
   const [isWorkshopModalOpen, setIsWorkshopModalOpen] = useState(false);
   const [selectedWorkshop, setSelectedWorkshop] = useState<{
+    title: string;
+    description: string;
+    images: string[];
+  } | null>(null);
+  const [isAssociationInfrastructure, setIsAssociationInfrastructureModalOpen] =
+    useState(false);
+  const [
+    selectedAssociationInfrastructure,
+    setSelectedAssociationInfrastructure,
+  ] = useState<{
     title: string;
     description: string;
     images: string[];
@@ -274,7 +284,63 @@ export default function Home() {
       ],
     },
   ];
+  const associationInfrastructures = [
+    {
+      title: "ملاعب القرب",
+      description:
+        "نقدم خدمة استخلاص فواتير الماء لتسهيل عملية الدفع على أفراد المجتمع. نعمل كوسيط بين السكان والمكتب الوطني للكهرباء والماء الصالح للشرب، مما يوفر الوقت والجهد على الجميع. تساعد هذه الخدمة في ضمان دفع الفواتير في الوقت المحدد وتجنب انقطاع الخدمة.",
+      images: [
+        "/pics/Slider3.jpeg",
+        "/pics/Slider3.jpeg",
+        "/pics/Slider3.jpeg",
+        "/pics/Slider3.jpeg",
+      ],
+    },
+    {
+      title: "الآبار",
+      description:
+        "نوفر خدمة النقل المدرسي لضمان وصول الطلاب إلى مدارسهم بأمان وفي الوقت المحدد. تغطي خدمتنا المناطق النائية والقرى المجاورة، مما يساعد في الحد من التسرب المدرسي ويشجع على التعليم. نستخدم حافلات آمنة ومريحة مع سائقين مدربين لضمان سلامة الأطفال.",
+      images: [
+        "/pics/Slider2.jpeg",
+        "/pics/Slider2.jpeg",
+        "/pics/Slider2.jpeg",
+        "/pics/Slider2.jpeg",
+      ],
+    },
+    {
+      title: " التعليم الأولي",
+      description:
+        "نقوم بتنظيم حملات منتظمة لجمع النفايات في المنطقة للحفاظ على نظافة البيئة وجمالها. نعمل مع المتطوعين والسكان المحليين لجمع وفرز النفايات، مع التركيز على إعادة التدوير حيثما أمكن. هذه المبادرة تساعد في تعزيز الوعي البيئي وخلق مجتمع أكثر استدامة.",
+      images: [
+        "/pics/Slider3.jpeg",
+        "/pics/Slider3.jpeg",
+        "/pics/Slider3.jpeg",
+        "/pics/Slider3.jpeg",
+      ],
+    },
+  ];
 
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowBackToTop(window.scrollY > 300);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   return (
     <div className="flex flex-col min-h-screen">
       {/* <header className="bg-white shadow-sm sticky top-0 z-10 transition-all duration-300">
@@ -459,7 +525,6 @@ export default function Home() {
             />
           </Carousel>
         </section>
-
         <section className="py-16 bg-gradient-to-b from-[#4CAF50]/10 to-white">
           <div className="container mx-auto px-4">
             <h2
@@ -639,6 +704,48 @@ export default function Home() {
             </div>
           </div>
         </section>
+        <section className="py-16  bg-gradient-to-b from-[#ffd68b57]/10 to-white mb-8">
+          <div className="container mx-auto px-4">
+            <h2
+              className="section-title-services mb-8 text-center text-3xl font-bold"
+              data-aos="fade-up"
+            >
+              البنية التحتية للجمعية
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {associationInfrastructures.map(
+                (associationInfrastructure, index) => (
+                  <div
+                    key={index}
+                    className="bg-white p-6 rounded-lg shadow border-r-4 border-[#4CAF50]"
+                  >
+                    <h3
+                      className="text-xl font-semibold mb-4"
+                      data-aos="fade-up"
+                    >
+                      {associationInfrastructure.title}
+                    </h3>
+                    <p className="mb-4" data-aos="fade-up">
+                      {associationInfrastructure.description.slice(0, 100)}...
+                    </p>
+                    <Button
+                      onClick={() => {
+                        setSelectedAssociationInfrastructure(
+                          associationInfrastructure
+                        );
+                        setIsAssociationInfrastructureModalOpen(true);
+                      }}
+                      className="bg-[#4CAF50] text-white hover:bg-[#45a049] transition-colors"
+                      data-aos="fade-up"
+                    >
+                      عرض المزيد
+                    </Button>
+                  </div>
+                )
+              )}
+            </div>
+          </div>
+        </section>
         {/* New Map and Contact Form Section */}
         <section className="py-16 bg-gradient-to-b from-[#ffd68b57]/10 to-white mb-8">
           <div className="container mx-auto px-4">
@@ -792,6 +899,20 @@ export default function Home() {
         onClose={() => setIsWorkshopModalOpen(false)}
         workshop={selectedWorkshop!}
       />
+      <AssociationInfrastructureModal
+        isOpen={isAssociationInfrastructure}
+        onClose={() => setIsAssociationInfrastructureModalOpen(false)}
+        associationInfrastructure={selectedAssociationInfrastructure!}
+      />
+      {showBackToTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-4 right-4 bg-[#4CAF50] text-white p-2 rounded-full shadow-lg hover:bg-[#45a049] transition-colors focus:outline-none focus:ring-2 focus:ring-[#4CAF50] focus:ring-opacity-50"
+          aria-label="Back to top"
+        >
+          <ArrowUp className="h-6 w-6" />
+        </button>
+      )}
     </div>
   );
 }
