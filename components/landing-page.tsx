@@ -31,6 +31,7 @@ import "aos/dist/aos.css";
 import { Modal } from "./Modal";
 import { WorkshopsModal } from "./WorkshopsModal";
 import { ServiceModal } from "./ServiceModal";
+import { ContactForm } from "./ContactForm";
 
 const images = [
   {
@@ -106,7 +107,7 @@ export default function Home() {
           href="#"
           className={`nav-link ${mobile ? "mobile-nav-link" : ""}`}
         >
-          من نحن
+          معلومات عنا
         </Link>
       </li>
       <li>
@@ -122,7 +123,7 @@ export default function Home() {
           href="#"
           className={`nav-link ${mobile ? "mobile-nav-link" : ""}`}
         >
-          للاتصال
+          اتصل بنا
         </Link>
       </li>
     </>
@@ -335,70 +336,69 @@ export default function Home() {
         </div>
       </header> */}
       <header className="bg-white shadow-sm sticky top-0 z-10 transition-all duration-300">
-  <div className="container mx-auto px-4 flex justify-between items-center">
-    <div className="flex items-center space-x-2 rtl:space-x-reverse">
-      <Link
-        href="/"
-        className="flex items-center justify-center group"
-        data-aos="zoom-out"
-      >
-        <Image
-          src={logo}
-          alt="جمعية البويبات للتنمية والتربية والتضامن"
-          width={80}
-          height={80}
-          className={`object-contain transition-all duration-300 ${
-            isScrolled ? "w-12 h-12" : "w-16 h-16 sm:w-20 sm:h-20"
-          }`}
-        />
-        <span
-          className={`text-[#0000FF] font-bold transition-all duration-300 group-hover:text-[#4CAF50] rtl:mr-2 ltr:ml-2 ${
-            isScrolled
-              ? "text-sm sm:text-base"
-              : "text-base sm:text-lg md:text-xl lg:text-2xl"
-          }`}
-        >
-          جمعية البويبات للتنمية والتربية والتضامن
-        </span>
-      </Link>
-    </div>
+        <div className="container mx-auto px-4 flex justify-between items-center">
+          <div className="flex items-center space-x-2 rtl:space-x-reverse">
+            <Link
+              href="/"
+              className="flex items-center justify-center group"
+              data-aos="zoom-out"
+            >
+              <Image
+                src={logo}
+                alt="جمعية البويبات للتنمية والتربية والتضامن"
+                width={80}
+                height={80}
+                className={`object-contain transition-all duration-300 ${
+                  isScrolled ? "w-12 h-12" : "w-16 h-16 sm:w-20 sm:h-20"
+                }`}
+              />
+              <span
+                className={`text-[#0000FF] font-bold transition-all duration-300 group-hover:text-[#4CAF50] rtl:mr-2 ltr:ml-2 ${
+                  isScrolled
+                    ? "text-sm sm:text-base"
+                    : "text-base sm:text-lg md:text-xl lg:text-2xl"
+                }`}
+              >
+                جمعية البويبات للتنمية والتربية والتضامن
+              </span>
+            </Link>
+          </div>
 
-    {/* Main Navigation */}
-    <nav className="hidden lg:block" data-aos="zoom-in">
-      <ul className="flex space-x-6 rtl:space-x-reverse">
-        <NavLinks />
-      </ul>
-    </nav>
+          {/* Main Navigation */}
+          <nav className="hidden lg:block" data-aos="zoom-in">
+            <ul className="flex space-x-6 rtl:space-x-reverse">
+              <NavLinks />
+            </ul>
+          </nav>
 
-    {/* Mobile Menu Trigger */}
-    <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
-      <SheetTrigger asChild className="lg:hidden">
-        <Button
-          variant="ghost"
-          size="icon"
-          className="text-[#4CAF50] hover:text-[#0000FF]"
-          aria-label="Toggle menu"
-        >
-          {isMenuOpen ? (
-            <X className="h-6 w-6" />
-          ) : (
-            <Menu className="h-6 w-6" />
-          )}
-        </Button>
-      </SheetTrigger>
+          {/* Mobile Menu Trigger */}
+          <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+            <SheetTrigger asChild className="lg:hidden">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="text-[#4CAF50] hover:text-[#0000FF]"
+                aria-label="Toggle menu"
+              >
+                {isMenuOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
+              </Button>
+            </SheetTrigger>
 
-      {/* Mobile Menu Content */}
-      <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-        <nav className="flex flex-col space-y-4 mt-8">
-          <ul className="space-y-4">
-            <NavLinks mobile />
-          </ul>
-        </nav>
-      </SheetContent>
-    </Sheet>
-  </div>
-</header>
-
+            {/* Mobile Menu Content */}
+            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+              <nav className="flex flex-col space-y-4 mt-8">
+                <ul className="space-y-4">
+                  <NavLinks mobile />
+                </ul>
+              </nav>
+            </SheetContent>
+          </Sheet>
+        </div>
+      </header>
 
       <main className="flex-grow">
         <section className="py-0">
@@ -466,7 +466,7 @@ export default function Home() {
               className="section-title-who mb-8 text-center text-3xl font-bold"
               data-aos="fade-up"
             >
-              من نحن
+              معلومات عنا{" "}
             </h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
               {/* Left Section */}
@@ -636,6 +636,42 @@ export default function Home() {
                   </Button>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+        {/* New Map and Contact Form Section */}
+        <section className="py-16 bg-gradient-to-b from-[#ffd68b57]/10 to-white mb-8">
+          <div className="container mx-auto px-4">
+            <h2
+              className="section-title mb-12 text-center text-2xl md:text-3xl font-semibold"
+              data-aos="fade-up"
+            >
+              اتصل بنا
+            </h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+              {/* Map */}
+              <div
+                className="w-full h-[400px] rounded-lg overflow-hidden shadow-lg"
+                data-aos="fade-up"
+              >
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3441.1076928969716!2d-9.658611684887791!3d30.405661981758586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb3b703414bfd31%3A0x7242cfcbf344baf1!2sAgadir%2080000!5e0!3m2!1sen!2sma!4v1638123082543!5m2!1sen!2sma"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen={false}
+                  loading="lazy"
+                ></iframe>
+              </div>
+
+              {/* Contact Form */}
+              <div
+                className="bg-white p-6 rounded-lg shadow-lg"
+                data-aos="fade-up"
+              >
+                <h3 className="text-xl font-semibold mb-4">راسلنا</h3>
+                <ContactForm />
+              </div>
             </div>
           </div>
         </section>
