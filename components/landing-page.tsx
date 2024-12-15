@@ -126,7 +126,7 @@ export default function Home() {
           onClick={() => scrollToSection(aboutRef)}
           className={`nav-link ${mobile ? "mobile-nav-link" : ""}`}
         >
-          من نحن
+          معلومات عنا
         </button>
       </li>
       <li>
@@ -142,7 +142,7 @@ export default function Home() {
           onClick={() => scrollToSection(contactRef)}
           className={`nav-link ${mobile ? "mobile-nav-link" : ""}`}
         >
-          للاتصال
+          اتصل بنا
         </button>
       </li>
     </>
