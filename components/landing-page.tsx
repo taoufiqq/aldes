@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import logo from "../public/pics/aldes.png";
+import team from "../public/pics/Good team.gif";
 import logoFooter from "../public/pics/logo-footer.jpg";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -536,7 +537,7 @@ export default function Home() {
         </section>
         <section
           ref={aboutRef}
-          className="py-16 bg-gradient-to-b from-[#4CAF50]/10 to-white"
+          className="py-16  bg-gradient-to-b from-[#ffd68b57]/10 to-white"
         >
           <div className="container mx-auto px-4">
             <h2
@@ -569,27 +570,7 @@ export default function Home() {
                       <strong>تاريخ إنشاء المؤسسة :</strong> 29-08-1999
                     </p>
                   </section>
-                  <section className="objectives mt-6">
-                    <h2 className="text-xl font-bold mb-4">أهداف الجمعية</h2>
-                    <ul className="list-disc pl-6 space-y-2">
-                      <li>
-                        تجنيد الموارد البشرية للإسهام في التنمية الثقافية،
-                        الاجتماعية، والاقتصادية، والمحافظة على البيئة القروية.
-                      </li>
-                      <li>تعزيز البنية التحتية للدوار.</li>
-                      <li>العناية بالمرافق الاجتماعية للقرية.</li>
-                      <li>تشجيع وتأطير الأنشطة الثقافية، الرياضية، والفنية.</li>
-                      <li>
-                        توطيد علاقات التضامن بين الأعضاء لتقديم الدعم المعنوي
-                        والمادي.
-                      </li>
-                      <li>
-                        إنجاز مشاريع لمحاربة الأمية والتربية غير النظامية.
-                      </li>
-                      <li>الاهتمام بالبيئة.</li>
-                      <li>الاهتمام بالمعاقين وذوي الاحتياجات الخاصة.</li>
-                    </ul>
-                  </section>
+
                   <section className="fields mt-6">
                     <h2 className="text-xl font-bold mb-4">
                       مجالات الفعل والتدخل
@@ -646,6 +627,60 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <section
+          ref={aboutRef}
+          className="py-16 bg-gradient-to-b from-[#4CAF50]/10 to-white"
+        >
+          <div className="container mx-auto px-4">
+            <h2
+              className="section-title-workshop mb-8 text-center text-3xl font-bold"
+              data-aos="fade-up"
+            >
+              أهداف الجمعية
+            </h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+              {/* Left Section */}
+              <div className="bg-white p-6 rounded-lg shadow-lg border-l-4 border-[#f4a460;] overflow-y-auto max-h-[60vh] lg:max-h-[50vh] scrollbar-thin scrollbar-thumb-[#f4a461] scrollbar-track-gray-200">
+                <div className="text-lg leading-relaxed" data-aos="fade-up">
+                  <section className="objectives mt-6">
+                    <h2 className="text-xl font-bold mb-4">أهداف الجمعية</h2>
+                    <ul className="list-disc pl-6 space-y-2">
+                      <li>
+                        تجنيد الموارد البشرية للإسهام في التنمية الثقافية،
+                        الاجتماعية، والاقتصادية، والمحافظة على البيئة القروية.
+                      </li>
+                      <li>تعزيز البنية التحتية للدوار.</li>
+                      <li>العناية بالمرافق الاجتماعية للقرية.</li>
+                      <li>تشجيع وتأطير الأنشطة الثقافية، الرياضية، والفنية.</li>
+                      <li>
+                        توطيد علاقات التضامن بين الأعضاء لتقديم الدعم المعنوي
+                        والمادي.
+                      </li>
+                      <li>
+                        إنجاز مشاريع لمحاربة الأمية والتربية غير النظامية.
+                      </li>
+                      <li>الاهتمام بالبيئة.</li>
+                      <li>الاهتمام بالمعاقين وذوي الاحتياجات الخاصة.</li>
+                    </ul>
+                  </section>
+                </div>
+              </div>
+
+              {/* Right Section */}
+              <div
+                className="flex justify-center"
+                data-aos="fade-up"
+                data-aos-delay="200"
+              >
+                <div className="relative flex flex-col h-[400px] w-full max-w-lg items-center border-l-4 border-[#f4a460;] justify-center overflow-hidden rounded-lg  bg-background md:h-[380px] lg:h-[437px] shadow-lg">
+                  <Image width={400} src={team} />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section
           ref={servicesRef}
           className="py-16  bg-gradient-to-b from-[#ffd68b57]/10 to-white mb-8"
