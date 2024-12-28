@@ -674,7 +674,7 @@ export default function Home() {
                 data-aos-delay="200"
               >
                 <div className="relative flex flex-col h-[400px] w-full max-w-lg items-center border-l-4 border-[#f4a460;] justify-center overflow-hidden rounded-lg  bg-background md:h-[380px] lg:h-[437px] shadow-lg">
-                  <Image width={400} src={team} />
+                  <Image width={400} src={team} alt="team" />
                 </div>
               </div>
             </div>
